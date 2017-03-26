@@ -3,8 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "pouchdb": "^6.1.2",
     "react": "^15.4.2",
-    "react-dom": "^15.4.2"
+    "react-dom": "^15.4.2",
+    "react-virtualized": "^9.3.0"
   },
   "devDependencies": {
     "react-scripts": "0.9.5"
