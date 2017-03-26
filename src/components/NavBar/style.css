@@ -1,0 +1,11 @@
+.navbar-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-content: center;
+}
+
+.navbar-button--active {
+    font-weight: bold;
+    color: red;
+}

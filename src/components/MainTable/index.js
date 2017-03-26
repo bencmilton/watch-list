@@ -23,7 +23,7 @@ export default class MainTable extends Component {
 		return (
 			<Table
 				width={900}
-				height={300}
+				height={600}
 				headerHeight={20}
 				rowHeight={30}
 				rowCount={flatData.length}

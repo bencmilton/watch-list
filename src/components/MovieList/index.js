@@ -4,11 +4,8 @@ export default class MovieList extends Component {
 
 	render() {
 		return (
-			<div className="App">
-				<p className="App-intro">
-					Movie List
-				</p>
-
+			<div>
+				<p>Movie List</p>
 			</div>
 		);
 	}

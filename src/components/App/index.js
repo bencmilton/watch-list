@@ -2,7 +2,6 @@ import PouchDB from 'pouchdb';
 import React, { Component } from 'react';
 
 import MainTable from '../MainTable';
-
 import './style.css';
 
 const db = new PouchDB('http://localhost:5984/WatchList');
@@ -26,12 +25,9 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <div className="App-header">
-          <h2>Watch List</h2>
-        </div>
+			<div>
 				<MainTable rows={this.state.rows} />
-      </div>
+			</div>
     );
   }
 }

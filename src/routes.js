@@ -1,7 +1,6 @@
 import React from 'react';
 import {
 	BrowserRouter as Router,
-	Link,
 	Route,
 	Switch
 } from 'react-router-dom';
@@ -10,16 +9,12 @@ import App from './components/App';
 import AddTitleInput from './components/AddTitleInput';
 import MovieList from './components/MovieList';
 import NotFound from './components/NotFound';
+import NavBar from './components/NavBar';
 
 const Routes = props => (
 	<Router {...props}>
 		<div>
-			<ul>
-				<li><Link to="/">Home</Link></li>
-				<li><Link to="/add-title">Add Title</Link></li>
-				<li><Link to="/movie-list">Movies</Link></li>
-			</ul>
-			<hr/>
+			<NavBar />
 			<Switch>
 				<Route exact path="/" component={App} />
 				<Route exact path="/add-title" component={AddTitleInput} />
