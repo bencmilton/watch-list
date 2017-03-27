@@ -1,13 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
 
 import Routes from './routes';
+import store from './store/configure-store';
 
 import './index.css';
-import 'onsenui/css/onsenui.css';
-import 'onsenui/css-components-src/src/onsen-css-components.css';
 
 ReactDOM.render(
-	<Routes />,
+	<Provider store={store}>
+		<Routes />
+	</Provider>,
 	document.getElementById('root')
 );

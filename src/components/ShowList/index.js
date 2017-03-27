@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -20,14 +21,14 @@ class MovieList extends Component {
 			);
 		}
 
-		const movies = data.map(item => ({
+		const tvShows = data.map(item => ({
 			...item.doc,
 			...item
 		}))
-			.filter(item => item.type === 'Movie');
+			.filter(item => item.type === 'TV');
 
 		return (
-			<TitleTable data={movies} />
+			<TitleTable data={_.uniqBy(tvShows, 'title')} />
 		);
 	}
 }

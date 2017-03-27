@@ -16,6 +16,9 @@ export default class NavBar extends Component {
 					<NavbarLink to="/add-title" exact activeClassName="navbar-button--active">
 						Add Title
 					</NavbarLink>
+					<NavbarLink to="/tv-list" exact activeClassName="navbar-button--active">
+						TV Shows
+					</NavbarLink>
 					<NavbarLink to="/movie-list" exact activeClassName="navbar-button--active">
 						Movies
 					</NavbarLink>

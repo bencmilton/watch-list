@@ -31,6 +31,7 @@ export default class MainTable extends Component {
 			>
 				{COLUMN_NAMES.map(name =>
 					<Column
+						key={name}
 						label={name}
 						dataKey={name}
 						width={COLUMN_WIDTH}
