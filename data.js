@@ -486,9 +486,9 @@ module.exports = [
 		"type": "Movie"
 	},
 	{
-		"id": "Edge of Seventeen",
+		"id": "The Edge of Seventeen",
 		"date": "2017-02-04T05:00:00.000Z",
-		"title": "Edge of Seventeen",
+		"title": "The Edge of Seventeen",
 		"season": "--",
 		"episode": "--",
 		"source": "BenPlex",
@@ -771,7 +771,8 @@ module.exports = [
 		"season": "1",
 		"episode": "01",
 		"source": "HBOGO",
-		"type": "TV"
+		"type": "TV",
+		"imdbid": "tt5037914"
 	},
 	{
 		"id": "Girls (S6 E02)",
@@ -996,7 +997,8 @@ module.exports = [
 		"season": "1",
 		"episode": "02",
 		"source": "HBOGO",
-		"type": "TV"
+		"type": "TV",
+		"imdbid": "tt5037914"
 	},
 	{
 		"id": "Planet Earth (S2 E02)",
@@ -1041,7 +1043,8 @@ module.exports = [
 		"season": "1",
 		"episode": "03",
 		"source": "HBOGO",
-		"type": "TV"
+		"type": "TV",
+		"imdbid": "tt5037914"
 	},
 	{
 		"id": "Homeland (S6 E07)",
@@ -1176,7 +1179,8 @@ module.exports = [
 		"season": "1",
 		"episode": "04",
 		"source": "HBOGO",
-		"type": "TV"
+		"type": "TV",
+		"imdbid": "tt5037914"
 	},
 	{
 		"id": "Miss Sloane",
@@ -1224,9 +1228,9 @@ module.exports = [
 		"type": "Movie"
 	},
 	{
-		"id": "Animals (S2 E01)",
+		"id": "Animals. (S2 E01)",
 		"date": "2017-03-19T04:00:00.000Z",
-		"title": "Animals",
+		"title": "Animals.",
 		"season": "2",
 		"episode": "01",
 		"source": "HBOGO",
@@ -1311,7 +1315,8 @@ module.exports = [
 		"season": "1",
 		"episode": "05",
 		"source": "HBOGO",
-		"type": "TV"
+		"type": "TV",
+		"imdbid": "tt5037914"
 	},
 	{
 		"id": "Quantico (S2 E14)",
@@ -1320,6 +1325,15 @@ module.exports = [
 		"season": "2",
 		"episode": "14",
 		"source": "ABC",
+		"type": "TV"
+	},
+	{
+		"id": "Big Little Lies (S1 E06)",
+		"date": "2017-03-26T04:00:00.000Z",
+		"title": "Big Little Lies",
+		"season": "1",
+		"episode": "06",
+		"source": "HBOGO",
 		"type": "TV"
 	}
 ];

@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import TitleTable from '../TitleTable';
+import StatTable from '../StatTable';
 import * as dataActions from '../../actions/data-actions';
 
 class MovieList extends Component {
@@ -27,7 +28,10 @@ class MovieList extends Component {
 			.filter(item => item.type === 'Movie');
 
 		return (
+		<div>
+			<StatTable data={movies} />
 			<TitleTable data={movies} />
+		</div>
 		);
 	}
 }

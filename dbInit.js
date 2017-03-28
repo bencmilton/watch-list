@@ -1,4 +1,7 @@
+var _ = require('lodash');
 var PouchDB = require('pouchdb');
+var rp = require('request-promise');
+
 var data = require('./data');
 
 var db = new PouchDB('http://localhost:5984/WatchList');
@@ -14,7 +17,18 @@ data.forEach(entry => {
 		type: entry.type
 	};
 
-	db.put(document)
-		.then(response => console.log('response --> ', response))
-		.catch(err => console.log(err));
+	const contentType = entry.type === 'TV' ? 'series' : 'movie';
+	const query = entry.imdbid ? `i=${entry.imdbid}` : `t=${entry.title}`;
+	const uri = `http://www.omdbapi.com/?${query}&type=${contentType}&tomatoes=true`;
+	console.log('Request uri: ', uri);
+	return rp(uri).then(res => {
+		res = JSON.parse(res);
+		if (!res) {
+			return document;
+		}
+		const merged = _.merge(document, res);
+		db.put(merged)
+			.then(response => console.log('response --> ', response))
+			.catch(err => console.log(err));
+	});
 });

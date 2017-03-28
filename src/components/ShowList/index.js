@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
+import StatTable from '../StatTable';
 import TitleTable from '../TitleTable';
 import * as dataActions from '../../actions/data-actions';
 
@@ -28,7 +29,10 @@ class MovieList extends Component {
 			.filter(item => item.type === 'TV');
 
 		return (
-			<TitleTable data={_.uniqBy(tvShows, 'title')} />
+			<div>
+				<StatTable data={tvShows} />
+				<TitleTable data={_.uniqBy(tvShows, 'title')} />
+			</div>
 		);
 	}
 }
