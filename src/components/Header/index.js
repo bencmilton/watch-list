@@ -14,6 +14,10 @@ class Header extends Component {
 		this.props.actions.getAllData();
 	}
 
+	toggleStats = () => {
+		this.props.actions.toggleStats();
+	}
+
 	render() {
 		return (
 			<div className="navbar-container">
@@ -23,7 +27,9 @@ class Header extends Component {
 					</NavbarLink>
 				</div>
 				<div className="navbar-container right">
-					<Link onClick={() => this.props.actions.toggleStats()}>Stats</Link>
+					<Link onClick={this.toggleStats} className={this.props.global.showStats ? 'navbar-button--active' : ''}>
+						Stats
+					</Link>
 					<NavbarLink to="/add-title" exact activeClassName="navbar-button--active">
 						Add Title
 					</NavbarLink>
@@ -43,8 +49,17 @@ Header.propTypes = {
 	actions: PropTypes.shape({
 		getAllData: PropTypes.func,
 		toggleStats: PropTypes.func
+	}),
+	global: PropTypes.shape({
+		showStats: PropTypes.bool
 	})
 };
+
+function mapStateToProps(state) {
+	return {
+		global: state.global
+	};
+}
 
 function mapDispatchToProps(dispatch) {
 	return {
@@ -52,4 +67,4 @@ function mapDispatchToProps(dispatch) {
 	}
 }
 
-export default connect(null, mapDispatchToProps, null, { pure: false })(Header);
+export default connect(mapStateToProps, mapDispatchToProps, null, { pure: false })(Header);
