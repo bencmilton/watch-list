@@ -13,8 +13,7 @@ class MovieList extends Component {
 	}
 
 	render() {
-		const { data } = this.props;
-
+		const { data, global } = this.props;
 		if (!data.length) {
 			return (
 				<p>Loading...</p>
@@ -29,7 +28,9 @@ class MovieList extends Component {
 
 		return (
 		<div>
-			<StatTable data={movies} />
+			{global.showStats &&
+				<StatTable data={movies} />
+			}
 			<TitleTable data={movies} />
 		</div>
 		);
@@ -38,7 +39,8 @@ class MovieList extends Component {
 
 function mapStateToProps(state, props) {
 	return {
-		data: state.data
+		data: state.data,
+		global: state.global
 	};
 }
 
@@ -49,10 +51,16 @@ function mapDispatchToProps(dispatch) {
 }
 
 MovieList.propTypes = {
+	actions: PropTypes.shape({
+		getAllData: PropTypes.func
+	}),
 	data: PropTypes.arrayOf(PropTypes.shape({
 		doc: PropTypes.object,
 		type: PropTypes.string
-	}))
+	})),
+	global: PropTypes.shape({
+		showStats: PropTypes.bool
+	})
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(MovieList);

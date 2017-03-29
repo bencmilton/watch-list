@@ -1,9 +1,13 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
 import NavbarLink from '../Common/NavbarLink';
+import Link from '../Common/Link';
+import * as globalActions from '../../actions/global-actions';
 import './style.css';
 
-export default class NavBar extends Component {
+class NavBar extends Component {
 	render() {
 		return (
 			<div className="navbar-container">
@@ -13,6 +17,7 @@ export default class NavBar extends Component {
 					</NavbarLink>
 				</div>
 				<div className="navbar-container right">
+					<Link onClick={() => this.props.actions.toggleStats()}>Stats</Link>
 					<NavbarLink to="/add-title" exact activeClassName="navbar-button--active">
 						Add Title
 					</NavbarLink>
@@ -27,3 +32,17 @@ export default class NavBar extends Component {
 		)
 	}
 }
+
+function mapStateToProps(state, props) {
+	return {
+		global: state.global
+	};
+}
+
+function mapDispatchToProps(dispatch) {
+	return {
+		actions: bindActionCreators(globalActions, dispatch)
+	}
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(NavBar);

@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
@@ -7,14 +7,14 @@ import StatTable from '../StatTable';
 import TitleTable from '../TitleTable';
 import * as dataActions from '../../actions/data-actions';
 
-class MovieList extends Component {
+class ShowList extends Component {
 
 	componentDidMount() {
 		this.props.actions.getAllData();
 	}
 
 	render() {
-		const { data } = this.props;
+		const { data, global } = this.props;
 
 		if (!data.length) {
 			return (
@@ -30,16 +30,32 @@ class MovieList extends Component {
 
 		return (
 			<div>
-				<StatTable data={tvShows} />
+				{global.showStats &&
+					<StatTable data={tvShows} />
+				}
 				<TitleTable data={_.uniqBy(tvShows, 'title')} />
 			</div>
 		);
 	}
 }
 
+ShowList.propTypes = {
+	actions: PropTypes.shape({
+		getAllData: PropTypes.func
+	}),
+	data: PropTypes.arrayOf(PropTypes.shape({
+		doc: PropTypes.object,
+		type: PropTypes.string
+	})),
+	global: PropTypes.shape({
+		showStats: PropTypes.bool
+	})
+};
+
 function mapStateToProps(state, props) {
 	return {
-		data: state.data
+		data: state.data,
+		global: state.global
 	};
 }
 
@@ -49,4 +65,4 @@ function mapDispatchToProps(dispatch) {
 	}
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(MovieList);
+export default connect(mapStateToProps, mapDispatchToProps)(ShowList);
