@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
@@ -47,5 +47,12 @@ function mapDispatchToProps(dispatch) {
 		actions: bindActionCreators(dataActions, dispatch)
 	}
 }
+
+MovieList.propTypes = {
+	data: PropTypes.arrayOf(PropTypes.shape({
+		doc: PropTypes.object,
+		type: PropTypes.string
+	}))
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(MovieList);

@@ -558,9 +558,9 @@ module.exports = [
 		"type": "TV"
 	},
 	{
-		"id": "Parts Unknown: Cuba (S6 E01)",
+		"id": "Parts Unknown (S6 E01)",
 		"date": "2017-02-11T05:00:00.000Z",
-		"title": "Parts Unknown: Cuba",
+		"title": "Parts Unknown",
 		"season": "6",
 		"episode": "01",
 		"source": "Netflix",
@@ -1334,6 +1334,42 @@ module.exports = [
 		"season": "1",
 		"episode": "06",
 		"source": "HBOGO",
+		"type": "TV"
+	},
+	{
+		"id": "Girls (S6 E07)",
+		"date": "2017-03-26T04:00:00.000Z",
+		"title": "Girls",
+		"season": "6",
+		"episode": "07",
+		"source": "HBOGO",
+		"type": "TV"
+	},
+	{
+		"id": "Crashing (S1 E06)",
+		"date": "2017-03-26T04:00:00.000Z",
+		"title": "Crashing",
+		"season": "1",
+		"episode": "06",
+		"source": "HBOGO",
+		"type": "TV"
+	},
+	{
+		"id": "Homeland (S6 E10)",
+		"date": "2017-03-27T04:00:00.000Z",
+		"title": "Homeland",
+		"season": "6",
+		"episode": "10",
+		"source": "Showtime",
+		"type": "TV"
+	},
+	{
+		"id": "Billions (S2 E06)",
+		"date": "2017-03-27T04:00:00.000Z",
+		"title": "Billions",
+		"season": "2",
+		"episode": "06",
+		"source": "Showtime",
 		"type": "TV"
 	}
 ];

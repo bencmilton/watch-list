@@ -1,12 +1,36 @@
-import { Column, Table } from 'react-virtualized';
-import React, { Component } from 'react';
+import _ from 'lodash';
+import React, { Component, PropTypes } from 'react';
+import { Column, SortDirection, Table } from 'react-virtualized';
 import 'react-virtualized/styles.css';
 
+import { formatDate } from '../../helpers';
+
 const COLUMN_WIDTH = 500;
-const COLUMN_NAMES = ['date', 'title', 'season', 'episode', 'source', 'type'];
+const COLUMN_NAMES = ['title', 'season', 'episode', 'source', 'type'];
 
 export default class MainTable extends Component {
+
+	constructor (props) {
+		super(props);
+		this.state = {
+			sortBy: 'date',
+			sortDirection: SortDirection.ASC
+		}
+	}
+
+	sort = ({ sortBy, sortDirection }) => {
+		this.setState({
+			sortBy,
+			sortDirection
+		});
+	}
+
 	render() {
+		const {
+			sortBy,
+			sortDirection
+		} = this.state;
+
 		const { rows } = this.props;
 
 		if (!rows.length) {
@@ -15,10 +39,13 @@ export default class MainTable extends Component {
 			);
 		}
 
-		const flatData = rows.map(item => ({
+		const flatData = _.map(rows, item => ({
 			...item.doc,
 			...item
 		}));
+
+		const sortDir = sortDirection === 'ASC' ? 'asc' :'desc';
+		const sortedList = _.orderBy(flatData, [sortBy], [sortDir]);
 
 		return (
 			<Table
@@ -26,10 +53,21 @@ export default class MainTable extends Component {
 				height={600}
 				headerHeight={20}
 				rowHeight={30}
-				rowCount={flatData.length}
-				rowGetter={({ index }) => flatData[index]}
+				rowCount={sortedList.length}
+				rowGetter={({ index }) => sortedList[index]}
+				sort={this.sort}
+				sortBy={sortBy}
+				sortDirection={sortDirection}
 			>
-				{COLUMN_NAMES.map(name =>
+				<Column
+					label="date"
+					dataKey="date"
+					width={COLUMN_WIDTH}
+					cellRenderer={({ cellData, columnData, dataKey, rowData, rowIndex }) =>
+						formatDate(sortedList[rowIndex].date)
+					}
+				/>
+				{_.map(COLUMN_NAMES, name =>
 					<Column
 						key={name}
 						label={name}
@@ -41,3 +79,14 @@ export default class MainTable extends Component {
 		);
 	}
 }
+
+MainTable.propTypes = {
+	data: PropTypes.arrayOf(PropTypes.shape({
+		date: PropTypes.string,
+		episode: PropTypes.string,
+		season: PropTypes.string,
+		source: PropTypes.string,
+		title: PropTypes.string,
+		type: PropTypes.string
+	}))
+};

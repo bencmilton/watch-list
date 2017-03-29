@@ -1,24 +1,47 @@
 import _ from 'lodash';
-import React from 'react';
+import React, { PropTypes } from 'react';
+import './style.css';
 
-function getImdbScore(content) {
-	return content.imdbRating && _.toNumber(content.imdbRating);
-}
-
-function getRuntime(content) {
-	return content.Runtime && _.toNumber(content.Runtime.split(' min')[0]);
-}
+import {
+	getImdbScore,
+	getRuntime,
+	minutesToHours
+} from '../../helpers';
 
 export default function StatTable({ data }) {
+	const minutesWatched = _.sumBy(data, getRuntime);
 	const minScore = _.minBy(data, getImdbScore);
 	const maxScore = _.maxBy(data, getImdbScore);
 	return (
-		<div>
-			<p><b>Minutes watched</b>: {_.round(_.sumBy(data, getRuntime), 1)}</p>
-			<p><b>IMDb</b></p>
-			<p><b>Max score</b>: {maxScore.title}, {maxScore.imdbRating}</p>
-			<p><b>Average score</b>: {_.round(_.meanBy(data, getImdbScore), 1)}</p>
-			<p><b>Min score</b>: {minScore.title}, {minScore.imdbRating}</p>
+		<div className="stat-table--container">
+			<table>
+				<tbody>
+					<tr>
+						<td><b>Time wasted</b></td>
+						<td>{minutesToHours(_.round(minutesWatched, 1))}</td>
+					</tr>
+					<tr>
+						<td><b>Highest score</b></td>
+						<td>{maxScore.imdbRating} ({maxScore.title})</td>
+					</tr>
+					<tr>
+						<td><b>Average score</b></td>
+						<td>{_.round(_.meanBy(data, getImdbScore), 1)}</td>
+					</tr>
+					<tr>
+						<td><b>Lowest score</b></td>
+						<td>{minScore.imdbRating} ({minScore.title})</td>
+					</tr>
+				</tbody>
+			</table>
 		</div>
 	);
 }
+
+StatTable.propTypes = {
+	data: PropTypes.arrayOf(PropTypes.shape({
+		imdbRating: PropTypes.string,
+		Runtime: PropTypes.string,
+		title: PropTypes.string
+	}))
+};
