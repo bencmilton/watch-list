@@ -6,7 +6,7 @@ import 'react-virtualized/styles.css';
 import { formatDate } from '../../helpers';
 
 const COLUMN_WIDTH = 500;
-const COLUMN_NAMES = ['title', 'season', 'episode', 'source', 'type'];
+const COLUMN_NAMES = ['title', 'season', 'episode', 'runtime', 'source', 'type'];
 
 export default class MainTable extends Component {
 
@@ -78,8 +78,15 @@ export default class MainTable extends Component {
 MainTable.propTypes = {
 	data: PropTypes.arrayOf(PropTypes.shape({
 		date: PropTypes.string,
-		episode: PropTypes.string,
-		season: PropTypes.string,
+		episode: PropTypes.oneOfType([
+			PropTypes.string,
+			PropTypes.number,
+		]),
+		runtime: PropTypes.number,
+		season: PropTypes.oneOfType([
+			PropTypes.string,
+			PropTypes.number,
+		]),
 		source: PropTypes.string,
 		title: PropTypes.string,
 		type: PropTypes.string

@@ -63,7 +63,7 @@ export default class TitleTable extends Component {
 					}
 				/>
 				<Column
-					dataKey="Poster"
+					dataKey="poster"
 					width={250}
 					cellRenderer={({ cellData, columnData, dataKey, rowData, rowIndex }) => cellData &&
 						<a href={`http://www.imdb.com/title/${sortedList[rowIndex].imdbID}`}>
@@ -73,7 +73,7 @@ export default class TitleTable extends Component {
 				/>
 				<Column
 					label="Title"
-					dataKey="Title"
+					dataKey="title"
 					width={COLUMN_WIDTH}
 				/>
 				<Column
@@ -89,7 +89,7 @@ export default class TitleTable extends Component {
 TitleTable.propTypes = {
 	data: PropTypes.arrayOf(PropTypes.shape({
 		Poster: PropTypes.string,
-		Title: PropTypes.string,
+		title: PropTypes.string,
 		imdbRating: PropTypes.string,
 	}))
 };
