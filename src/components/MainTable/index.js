@@ -31,21 +31,16 @@ export default class MainTable extends Component {
 			sortDirection
 		} = this.state;
 
-		const { rows } = this.props;
+		const { data } = this.props;
 
-		if (!rows.length) {
+		if (!data.length) {
 			return (
 				<p>Loading...</p>
 			);
 		}
 
-		const flatData = _.map(rows, item => ({
-			...item.doc,
-			...item
-		}));
-
 		const sortDir = sortDirection === 'ASC' ? 'asc' :'desc';
-		const sortedList = _.orderBy(flatData, [sortBy], [sortDir]);
+		const sortedList = _.orderBy(data, [sortBy], [sortDir]);
 
 		return (
 			<Table

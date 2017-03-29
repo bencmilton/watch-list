@@ -1,13 +1,19 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import NavbarLink from '../Common/NavbarLink';
 import Link from '../Common/Link';
 import * as globalActions from '../../actions/global-actions';
+import * as dataActions from '../../actions/data-actions';
 import './style.css';
 
-class NavBar extends Component {
+class Header extends Component {
+
+	componentDidMount() {
+		this.props.actions.getAllData();
+	}
+
 	render() {
 		return (
 			<div className="navbar-container">
@@ -33,16 +39,17 @@ class NavBar extends Component {
 	}
 }
 
-function mapStateToProps(state, props) {
-	return {
-		global: state.global
-	};
-}
+Header.propTypes = {
+	actions: PropTypes.shape({
+		getAllData: PropTypes.func,
+		toggleStats: PropTypes.func
+	})
+};
 
 function mapDispatchToProps(dispatch) {
 	return {
-		actions: bindActionCreators(globalActions, dispatch)
+		actions: bindActionCreators({ ...globalActions, ...dataActions }, dispatch)
 	}
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(NavBar);
+export default connect(null, mapDispatchToProps, null, { pure: false })(Header);
