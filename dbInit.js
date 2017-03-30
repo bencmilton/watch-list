@@ -15,8 +15,12 @@ function getImdbVotes(str) {
 }
 
 function formatRes(entry, res) {
+	if (res.Runtime > 250 &&!entry.fixedruntime) {
+		console.error(`Runtime is really high: ${res.Runtime}. This probably isn\'t right. You probably need to add a "fixedruntime"`);
+	}
+
 	return {
-		runtime: entry.fixed_runtime ? getRuntime(entry.fixed_runtime) : getRuntime(res.Runtime),
+		runtime: entry.fixedruntime ? getRuntime(entry.fixedruntime) : getRuntime(res.Runtime),
 		year: _.toNumber(res.Year),
 		rated: res.Rated,
 		released: res.Released,

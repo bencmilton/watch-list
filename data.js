@@ -222,7 +222,8 @@ module.exports = [
 		"season": "1",
 		"episode": "01",
 		"source": "HBOGO",
-		"type": "TV"
+		"type": "TV",
+		"fixedruntime": "59 min"
 	},
 	{
 		"id": "Band of Brothers (S1 E02)",
@@ -231,7 +232,8 @@ module.exports = [
 		"season": "1",
 		"episode": "02",
 		"source": "HBOGO",
-		"type": "TV"
+		"type": "TV",
+		"fixedruntime": "59 min"
 	},
 	{
 		"id": "The Young Pope (S1 E01)",
@@ -249,7 +251,8 @@ module.exports = [
 		"season": "1",
 		"episode": "03",
 		"source": "HBOGO",
-		"type": "TV"
+		"type": "TV",
+		"fixedruntime": "59 min"
 	},
 	{
 		"id": "The Good Place (S1 E11)",
@@ -267,7 +270,8 @@ module.exports = [
 		"season": "1",
 		"episode": "04",
 		"source": "HBOGO",
-		"type": "TV"
+		"type": "TV",
+		"fixedruntime": "59 min"
 	},
 	{
 		"id": "Band of Brothers (S1 E05)",
@@ -276,7 +280,8 @@ module.exports = [
 		"season": "1",
 		"episode": "05",
 		"source": "HBOGO",
-		"type": "TV"
+		"type": "TV",
+		"fixedruntime": "59 min"
 	},
 	{
 		"id": "Band of Brothers (S1 E06)",
@@ -285,7 +290,8 @@ module.exports = [
 		"season": "1",
 		"episode": "06",
 		"source": "HBOGO",
-		"type": "TV"
+		"type": "TV",
+		"fixedruntime": "59 min"
 	},
 	{
 		"id": "The Crown (S1 E03)",
@@ -925,7 +931,8 @@ module.exports = [
 		"season": "2",
 		"episode": "01",
 		"source": "BBC",
-		"type": "TV"
+		"type": "TV",
+		"fixedruntime": "53 min"
 	},
 	{
 		"id": "How to Get Away With Murder (S3 E11)",
@@ -1007,7 +1014,8 @@ module.exports = [
 		"season": "2",
 		"episode": "02",
 		"source": "BBC",
-		"type": "TV"
+		"type": "TV",
+		"fixedruntime": "53 min"
 	},
 	{
 		"id": "Planet Earth (S2 E03)",
@@ -1016,7 +1024,8 @@ module.exports = [
 		"season": "2",
 		"episode": "03",
 		"source": "BBC",
-		"type": "TV"
+		"type": "TV",
+		"fixedruntime": "53 min"
 	},
 	{
 		"id": "Big Little Lies (S1 E03)",
@@ -1297,7 +1306,8 @@ module.exports = [
 		"season": "2",
 		"episode": "04",
 		"source": "BBC",
-		"type": "TV"
+		"type": "TV",
+		"fixedruntime": "53 min"
 	},
 	{
 		"id": "Planet Earth (S2 E05)",
@@ -1306,7 +1316,8 @@ module.exports = [
 		"season": "2",
 		"episode": "05",
 		"source": "BBC",
-		"type": "TV"
+		"type": "TV",
+		"fixedruntime": "53 min"
 	},
 	{
 		"id": "Crashing (S1 E05)",
@@ -1370,6 +1381,24 @@ module.exports = [
 		"season": "2",
 		"episode": "06",
 		"source": "Showtime",
+		"type": "TV"
+	},
+	{
+		"id": "Dancing with the Stars (S24 E01)",
+		"date": "2017-03-28T04:00:00.000Z",
+		"title": "Dancing with the Stars",
+		"season": "24",
+		"episode": "01",
+		"source": "ABC",
+		"type": "TV"
+	},
+	{
+		"id": "The Americans (S5 E04)",
+		"date": "2017-03-28T04:00:00.000Z",
+		"title": "The Americans",
+		"season": "5",
+		"episode": "04",
+		"source": "FX",
 		"type": "TV"
 	}
 ];
