@@ -4,12 +4,12 @@ import './style.css';
 
 import { minutesToHours } from '../../helpers';
 
-export default function StatTable({ data }) {
+export default function StatTable({ data, showStats }) {
 	const minutesWatched = _.sumBy(data, 'runtime');
 	const minScore = _.minBy(data, 'imdbRating');
 	const maxScore = _.maxBy(data, 'imdbRating');
 	return (
-		<div className="stat-table--container">
+		<div className={`stat-table--container ${showStats ? 'stat-table--container__open' : ''}`}>
 			<table>
 				<tbody>
 					<tr>
@@ -37,7 +37,7 @@ export default function StatTable({ data }) {
 StatTable.propTypes = {
 	data: PropTypes.arrayOf(PropTypes.shape({
 		imdbRating: PropTypes.number,
-		runtime: PropTypes.string,
+		runtime: PropTypes.number,
 		title: PropTypes.string
 	}))
 };

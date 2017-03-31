@@ -8,9 +8,11 @@ class MainList extends Component {
 
   render() {
     return (
-			<div className="table-container">
-				<div className="table-card">
-					<MainTable data={this.props.data.allData} />
+			<div className="body-container">
+				<div className="table-container">
+					<div className="table-card">
+						<MainTable data={this.props.data.allData} />
+					</div>
 				</div>
 			</div>
     );

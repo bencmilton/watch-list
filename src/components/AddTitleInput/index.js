@@ -16,15 +16,17 @@ export default class AddTitleInput extends Component {
 
 	render() {
 		return (
-			<div className="App">
-				<p className="App-intro">
-					Click to add: <code>{this.state.value}</code>
-				</p>
-				<input
-					type="text"
-					value={this.state.value}
-					onChange={this.handleChange}
-				/>
+			<div className="body-container">
+				<div className="table-container">
+					<div className="table-card">
+						<p>Click to add: <code>{this.state.value}</code></p>
+						<input
+							type="text"
+							value={this.state.value}
+							onChange={this.handleChange}
+						/>
+					</div>
+				</div>
 			</div>
 		);
 	}

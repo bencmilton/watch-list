@@ -23,12 +23,12 @@ class Header extends Component {
 		const currentPath = window.location.pathname;
 		return (
 			<div className="navbar-container">
-				<div className="navbar-container center">
+				<div className="navbar-container navbar-container--segment">
 					<NavbarLink to="/" exact activeClassName="navbar-button--active">
 						Watch List
 					</NavbarLink>
 				</div>
-				<div className="navbar-container right">
+				<div className="navbar-container navbar-container--segment">
 					{_.includes(['/tv-list', '/movie-list'], currentPath) &&
 						<Link onClick={this.toggleStats} className={this.props.global.showStats ? 'navbar-button--active' : ''}>
 							Stats
