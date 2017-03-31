@@ -1,0 +1,14 @@
+.table-card--tabs {
+    width: 100%;
+    text-align: center;
+    display: flex;
+    padding-bottom: 30px;
+}
+
+.table-card--tab {
+    width: 50%;
+}
+
+.table-card--current-tab {
+    font-weight: bold;
+}

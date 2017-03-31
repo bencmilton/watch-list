@@ -17,7 +17,7 @@ body {
   justify-content: center;
   align-items: center;
   background: rgb(76,217,100);
-  padding-top: 60px;
+  padding: 60px 0;
 }
 
 .table-card {

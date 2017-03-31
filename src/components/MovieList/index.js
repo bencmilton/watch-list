@@ -1,12 +1,26 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 
+import TableCardTabs from '../TableCardTabs';
+import TitleGrid from '../TitleGrid';
 import TitleTable from '../TitleTable';
 import StatTable from '../StatTable';
 
 class MovieList extends Component {
 
+	constructor(props) {
+		super(props);
+		this.state = {
+			currentTab: 'grid'
+		}
+	}
+
+	setCurrentTab = currentTab => {
+		this.setState({ currentTab });
+	}
+
 	render() {
+		const { currentTab } = this.state;
 		const { data, global } = this.props;
 		if (!data.movies.length) {
 			return (
@@ -19,7 +33,11 @@ class MovieList extends Component {
 				<div className="table-container">
 					<StatTable showStats={global.showStats} data={data.movies} />
 					<div className="table-card">
-						<TitleTable data={data.movies} />
+						<TableCardTabs setCurrentTab={this.setCurrentTab} currentTab={currentTab} />
+						{currentTab === 'grid'
+							? <TitleGrid data={data.movies} />
+							: <TitleTable data={data.movies} />
+						}
 					</div>
 				</div>
 			</div>

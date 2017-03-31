@@ -1,0 +1,16 @@
+.title-grid--container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.title-grid--item {
+    flex-direction: column;
+}
+
+.title-grid--poster {
+    width: 250px;
+}
+
+.title-grid--title {
+
+}
