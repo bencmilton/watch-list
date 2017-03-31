@@ -3,9 +3,11 @@
     flex-direction: row;
     justify-content: space-between;
     align-content: center;
+    background: rgb(76,217,100);
+    padding: 10px;
 }
 
 .navbar-button--active {
     font-weight: bold;
-    color: red;
+    color: rgb(255,59,48);
 }

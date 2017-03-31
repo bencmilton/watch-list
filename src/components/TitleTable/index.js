@@ -90,6 +90,6 @@ TitleTable.propTypes = {
 	data: PropTypes.arrayOf(PropTypes.shape({
 		Poster: PropTypes.string,
 		title: PropTypes.string,
-		imdbRating: PropTypes.string,
+		imdbRating: PropTypes.number,
 	}))
 };

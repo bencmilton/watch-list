@@ -8,8 +8,10 @@ class MainList extends Component {
 
   render() {
     return (
-			<div>
-				<MainTable data={this.props.data.allData} />
+			<div className="table-container">
+				<div className="table-card">
+					<MainTable data={this.props.data.allData} />
+				</div>
 			</div>
     );
   }

@@ -15,11 +15,13 @@ class MovieList extends Component {
 		}
 
 		return (
-			<div>
+			<div className="table-container">
 				{global.showStats &&
 					<StatTable data={data.movies} />
 				}
-				<TitleTable data={data.movies} />
+				<div className="table-card">
+					<TitleTable data={data.movies} />
+				</div>
 			</div>
 		);
 	}

@@ -17,11 +17,13 @@ class ShowList extends Component {
 		}
 
 		return (
-			<div>
+			<div className="table-container">
 				{global.showStats &&
 					<StatTable data={data.tvShows} />
 				}
-				<TitleTable data={_.uniqBy(data.tvShows, 'title')} />
+				<div className="table-card">
+					<TitleTable data={_.uniqBy(data.tvShows, 'title')} />
+				</div>
 			</div>
 		);
 	}

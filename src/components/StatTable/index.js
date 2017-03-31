@@ -36,7 +36,7 @@ export default function StatTable({ data }) {
 
 StatTable.propTypes = {
 	data: PropTypes.arrayOf(PropTypes.shape({
-		imdbRating: PropTypes.string,
+		imdbRating: PropTypes.number,
 		runtime: PropTypes.string,
 		title: PropTypes.string
 	}))

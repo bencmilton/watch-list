@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -19,6 +20,7 @@ class Header extends Component {
 	}
 
 	render() {
+		const currentPath = window.location.pathname;
 		return (
 			<div className="navbar-container">
 				<div className="navbar-container center">
@@ -27,9 +29,11 @@ class Header extends Component {
 					</NavbarLink>
 				</div>
 				<div className="navbar-container right">
-					<Link onClick={this.toggleStats} className={this.props.global.showStats ? 'navbar-button--active' : ''}>
-						Stats
-					</Link>
+					{_.includes(['/tv-list', '/movie-list'], currentPath) &&
+						<Link onClick={this.toggleStats} className={this.props.global.showStats ? 'navbar-button--active' : ''}>
+							Stats
+						</Link>
+					}
 					<NavbarLink to="/add-title" exact activeClassName="navbar-button--active">
 						Add Title
 					</NavbarLink>

@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
 const Link = styled.span`
-  color: palevioletred;
+  color: white;
   display: block;
-  margin: 0.5em 0;
+  margin: 10px;
   font-family: Helvetica, Arial, sans-serif;
   text-decoration: none;
   padding: 15px 5px;
