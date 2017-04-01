@@ -1,7 +1,9 @@
 import _ from 'lodash';
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
+import * as dataActions from '../../actions/data-actions';
 import { formatJsDate } from '../../helpers';
 import './style.css';
 
@@ -20,6 +22,12 @@ class AddTitleModal extends Component {
 			episode: initialData ? initialData.episode + 1 : '--',
 			source: initialData ? initialData.source : 'Benplex',
 			type: initialData ? initialData.type : 'TV',
+		}
+	}
+
+	componentDidMount() {
+		if (!this.props.data.allData) {
+			this.props.actions.getAllData();
 		}
 	}
 
@@ -43,6 +51,10 @@ class AddTitleModal extends Component {
 	}
 
 	renderSelectOptions(items, type) {
+		if (!items) {
+			return [];
+		}
+
 		const capType = _.capitalize(type);
 		return _.map(items, item =>
 			<option key={item} value={item}>{item}</option>
@@ -77,13 +89,18 @@ class AddTitleModal extends Component {
 		} = this.state;
 
 		const {
-			movies,
+			allData,
 			sources,
 			tvShows
 		} = this.props.data;
 
-		const titleType = type === 'TV' ? _.uniqBy(tvShows, 'title') : movies;
-		const titles = _.map(titleType, item => item.title);
+		if (!allData) {
+			return (
+				<p>Loading...</p>
+			)
+		}
+
+		const tvTitles = _.uniqBy(tvShows, 'title').map(item => item.title);
 
 		return (
 			<form onSubmit={this.submitForm} className="add-title--container">
@@ -100,14 +117,16 @@ class AddTitleModal extends Component {
 				</label>
 				<label>
 					<p>Title</p>
-					<select className="add-title--input" name="title" onChange={this.handleChange} value={title}>
-						{this.renderSelectOptions(titles, 'title')}
-					</select>
-					{title === 'newTitle' &&
-					<p>
-						{'Add New Title: '}
-						<input className="add-title--input" name="title" onChange={this.handleChange} value={title} />
-					</p>
+					{type === 'TV' &&
+						<select className="add-title--input" name="title" onChange={this.handleChange} value={title}>
+							{this.renderSelectOptions(tvTitles, 'title')}
+						</select>
+					}
+					{(title === 'newTitle' || type === 'Movie') &&
+						<p>
+							{'Add New Title: '}
+							<input className="add-title--input" name="title" onChange={this.handleChange} value={title} />
+						</p>
 					}
 				</label>
 				{type === 'TV' &&
@@ -162,7 +181,7 @@ AddTitleModal.propTypes = {
 	data: PropTypes.shape({
 		allData: PropTypes.arrayOf(PropTypes.object),
 		sources: PropTypes.arrayOf(PropTypes.string),
-		titles: PropTypes.arrayOf(PropTypes.string)
+		tvShows: PropTypes.arrayOf(PropTypes.object)
 	}),
 	lastEpisodeWatched: PropTypes.shape({
 		episode: PropTypes.number,
@@ -179,4 +198,10 @@ function mapStateToProps(state) {
 	};
 }
 
-export default connect(mapStateToProps)(AddTitleModal);
+function mapDispatchToProps(dispatch) {
+	return {
+		actions: bindActionCreators(dataActions, dispatch)
+	}
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(AddTitleModal);
