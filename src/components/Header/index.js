@@ -10,7 +10,7 @@ import * as globalActions from '../../actions/global-actions';
 import * as dataActions from '../../actions/data-actions';
 import './style.css';
 
-const STATS_ENABLED_PAGES = ['/tv-list', '/movie-list'];
+const STATS_ENABLED_PAGES = ['/', '/tv-list', '/movie-list'];
 
 class Header extends Component {
 

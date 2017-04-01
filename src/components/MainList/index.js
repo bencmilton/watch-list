@@ -6,6 +6,7 @@ import AddButton from '../AddButton';
 import AddTitleModal from '../AddTitleModal';
 import PageContainer from '../PageContainer';
 import MainTable from '../MainTable';
+import StatTable from '../StatTable';
 import * as dataActions from '../../actions/data-actions';
 import './style.css';
 
@@ -40,6 +41,7 @@ class MainList extends Component {
 				{this.state.modalOpen &&
 					<AddTitleModal addTitle={this.addTitle} />
 				}
+				<StatTable showStats={this.props.global.showStats} data={this.props.data.allData} />
 				<AddButton onClick={this.toggleModal} />
 			</PageContainer>
     );
@@ -52,12 +54,16 @@ MainList.propTypes = {
 	}),
 	data: PropTypes.shape({
 		allData: PropTypes.arrayOf(PropTypes.object)
+	}),
+	global: PropTypes.shape({
+		showStats: PropTypes.bool
 	})
 };
 
 function mapStateToProps(state) {
 	return {
-		data: state.data
+		data: state.data,
+		global: state.global
 	};
 }
 
