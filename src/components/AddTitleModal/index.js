@@ -17,7 +17,7 @@ class AddTitleModal extends Component {
 		const initialData = props.lastEpisodeWatched || props.currentTitle;
 		this.state = {
 			date: formatJsDate(new Date()),
-			title: initialData ? initialData.title : '',
+			title: (props.type === 'TV' && initialData) ? initialData.title : '',
 			season: initialData ? initialData.season : '--',
 			episode: initialData ? initialData.episode + 1 : '--',
 			source: initialData ? initialData.source : 'Benplex',

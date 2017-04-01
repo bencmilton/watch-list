@@ -13,6 +13,9 @@ function TitleDetails({ title, watchedEpisodes }) {
 			/>
 			<div className="detail-page--info">
 				<h1>{title.title} {title.year && `(${title.year})`}</h1>
+				<p>Actors: {title.actors}</p>
+				<p>Plot: {title.plot}</p>
+				<p>Awards: {title.awards}</p>
 				<p>Genre: {title.genre}</p>
 				<p>Rated: {title.rated}</p>
 				<p>Release Date: {title.released}</p>
@@ -35,6 +38,9 @@ function TitleDetails({ title, watchedEpisodes }) {
 
 TitleDetails.propTypes ={
 	title: PropTypes.shape({
+		actors: PropTypes.string,
+		awards: PropTypes.string,
+		plot: PropTypes.string,
 		poster: PropTypes.string,
 		title: PropTypes.string,
 		year: PropTypes.number,

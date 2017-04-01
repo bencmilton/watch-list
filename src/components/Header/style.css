@@ -17,3 +17,8 @@
     font-weight: bold;
     color: rgb(255,59,48);
 }
+
+.navbar-button--inactive {
+    color: lightgrey;
+    font-weight: lighter;
+}
