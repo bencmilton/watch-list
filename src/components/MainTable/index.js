@@ -4,7 +4,8 @@ import { Column, SortDirection, Table } from 'react-virtualized';
 import 'react-virtualized/styles.css';
 
 const COLUMN_WIDTH = 500;
-const COLUMN_NAMES = ['title', 'season', 'episode', 'runtime', 'source', 'type'];
+const TITLE_COLUMN_WIDTH = 1000;
+const COLUMN_NAMES = ['title', 'season', 'episode', 'runtime', 'source', 'type', 'favorite'];
 
 export default class MainTable extends Component {
 
@@ -65,7 +66,7 @@ export default class MainTable extends Component {
 						key={name}
 						label={name}
 						dataKey={name}
-						width={COLUMN_WIDTH}
+						width={name === 'title' ? TITLE_COLUMN_WIDTH : COLUMN_WIDTH}
 					/>
 				)}
 			</Table>
