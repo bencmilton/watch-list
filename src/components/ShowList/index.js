@@ -1,20 +1,38 @@
 import _ from 'lodash';
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
+import AddButton from '../AddButton';
+import AddTitleModal from '../AddTitleModal';
 import PageContainer from '../PageContainer';
 import TableCardTabs from '../TableCardTabs';
 import TitleGrid from '../TitleGrid';
 import TitleTable from '../TitleTable';
 import StatTable from '../StatTable';
+import * as dataActions from '../../actions/data-actions';
 
 class ShowList extends Component {
 
 	constructor(props) {
 		super(props);
 		this.state = {
-			currentTab: 'grid'
+			currentTab: 'grid',
+			modalOpen: false
 		}
+	}
+
+	addTitle = data => {
+		this.props.actions.addTitle(data);
+		this.setState({
+			modalOpen: false
+		})
+	}
+
+	toggleModal = () => {
+		this.setState({
+			modalOpen: !this.state.modalOpen
+		})
 	}
 
 	setCurrentTab = currentTab => {
@@ -22,7 +40,7 @@ class ShowList extends Component {
 	}
 
 	render() {
-		const { currentTab } = this.state;
+		const { currentTab, modalOpen } = this.state;
 		const { data, global } = this.props;
 
 		if (!data.tvShows.length) {
@@ -32,21 +50,32 @@ class ShowList extends Component {
 		}
 
 		const uniqueShows = _.uniqBy(data.tvShows, 'title');
+		const tabbedContent = currentTab === 'grid'
+			? <TitleGrid data={uniqueShows} />
+			: <TitleTable data={uniqueShows} />;
+		const initialData = {
+			type: 'TV',
+			source: 'HBOGO'
+		};
 
 		return (
 			<PageContainer>
 				<StatTable showStats={global.showStats} data={data.tvShows} />
 				<TableCardTabs setCurrentTab={this.setCurrentTab} currentTab={currentTab} />
-				{currentTab === 'grid'
-					? <TitleGrid data={uniqueShows} />
-					: <TitleTable data={uniqueShows} />
+				{!modalOpen && tabbedContent}
+				{modalOpen &&
+					<AddTitleModal addTitle={this.addTitle} currentTitle={initialData} />
 				}
+				<AddButton onClick={this.toggleModal} />
 			</PageContainer>
 		);
 	}
 }
 
 ShowList.propTypes = {
+	actions: PropTypes.shape({
+		addTitle: PropTypes.func
+	}),
 	data: PropTypes.shape({
 		tvShows: PropTypes.arrayOf(PropTypes.object)
 	}),
@@ -62,4 +91,10 @@ function mapStateToProps(state) {
 	};
 }
 
-export default connect(mapStateToProps)(ShowList);
+function mapDispatchToProps(dispatch) {
+	return {
+		actions: bindActionCreators(dataActions, dispatch)
+	}
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ShowList);
