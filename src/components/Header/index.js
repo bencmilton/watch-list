@@ -10,6 +10,8 @@ import * as globalActions from '../../actions/global-actions';
 import * as dataActions from '../../actions/data-actions';
 import './style.css';
 
+const STATS_ENABLED_PAGES = ['/tv-list', '/movie-list'];
+
 class Header extends Component {
 
 	componentDidMount() {
@@ -17,7 +19,7 @@ class Header extends Component {
 	}
 
 	toggleStats = () => {
-		if (_.includes(['/tv-list', '/movie-list'], window.location.pathname)) {
+		if (_.includes(STATS_ENABLED_PAGES, window.location.pathname)) {
 			this.props.actions.toggleStats();
 		}
 	}
@@ -32,7 +34,7 @@ class Header extends Component {
 				</div>
 				<div className="navbar-container navbar-container--segment">
 					<Link onClick={this.toggleStats} className={classNames({
-						'navbar-button--inactive': !_.includes(['/tv-list', '/movie-list'], window.location.pathname),
+						'navbar-button--inactive': !_.includes(STATS_ENABLED_PAGES, window.location.pathname),
 						'navbar-button--active': this.props.global.showStats
 					})}>
 						Stats
