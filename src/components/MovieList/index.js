@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 
+import AddButton from '../AddButton';
 import PageContainer from '../PageContainer';
 import TableCardTabs from '../TableCardTabs';
 import TitleGrid from '../TitleGrid';
@@ -37,6 +38,7 @@ class MovieList extends Component {
 					? <TitleGrid data={data.movies} />
 					: <TitleTable data={data.movies} />
 				}
+				<AddButton />
 			</PageContainer>
 		);
 	}

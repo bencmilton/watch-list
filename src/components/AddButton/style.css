@@ -1,0 +1,12 @@
+.add-title-button {
+	position: fixed;
+	padding: 10px 20px;
+	border: 1px rgb(76,217,100) solid;
+	border-radius: 40px;
+	color: rgb(76,217,100);
+	background: white;
+	left: 25px;
+	top: 570px;
+	font-size: 46px;
+	box-shadow: 5px 5px rgba(0, 0, 0, 0.6);
+}

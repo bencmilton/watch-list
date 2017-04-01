@@ -12,3 +12,10 @@ export const getDetailData = imdbID => {
 		imdbID
 	};
 };
+
+export const addTitle = data => {
+	return {
+		type: types.ADD_TITLE,
+		data
+	};
+};

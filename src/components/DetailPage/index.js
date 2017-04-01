@@ -3,12 +3,34 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
+import AddButton from '../AddButton';
+import AddTitleModal from '../AddTitleModal';
 import PageContainer from '../PageContainer';
-import { formatDate } from '../../helpers';
+import TitleDetails from '../TitleDetails';
 import * as dataActions from '../../actions/data-actions';
 import './style.css';
 
 class DetailPage extends Component {
+
+	constructor(props) {
+		super(props);
+		this.state = {
+			modalOpen: false
+		}
+	}
+
+	addEpisode = data => {
+		this.props.actions.addTitle(data);
+		this.setState({
+			modalOpen: false
+		})
+	}
+
+	toggleModal = () => {
+		this.setState({
+			modalOpen: !this.state.modalOpen
+		})
+	}
 
 	componentDidMount() {
 		if (!this.props.data.allData.length) {
@@ -28,42 +50,27 @@ class DetailPage extends Component {
 
 	render() {
 		const { allData, detailPage } = this.props.data;
-		console.log('DetailPage, detailPage --> ', detailPage)
 		if (!detailPage) {
 			return (
 				<p>Loading...</p>
 			)
 		}
 
-		const watchedEpisodes = _.filter(allData, { title: detailPage.title });
+		const watchedEpisodes = _(allData).filter({ title: detailPage.title }).sortBy('episode').value();
 
 		return (
 			<PageContainer>
-				<div className="detail-page--container">
-					<img
-						src={detailPage.poster}
-						className="detail-page--poster"
-						alt={detailPage.title}
+				{!this.state.modalOpen &&
+					<TitleDetails title={detailPage} watchedEpisodes={watchedEpisodes} />
+				}
+				{this.state.modalOpen &&
+					<AddTitleModal
+						addTitle={this.addEpisode}
+						currentTitle={detailPage}
+						lastEpisodeWatched={watchedEpisodes[watchedEpisodes.length - 1]}
 					/>
-					<div className="detail-page--info">
-						<h1>{detailPage.title} {detailPage.year && `(${detailPage.year})`}</h1>
-						<p>Genre: {detailPage.genre}</p>
-						<p>Rated: {detailPage.rated}</p>
-						<p>Release Date: {detailPage.released}</p>
-						<p>IMDb Rating: {detailPage.imdbRating} ({detailPage.imdbVotes} votes)</p>
-						<p>Runtime: {detailPage.runtime} minutes</p>
-						{detailPage.type === 'TV' &&
-							<div>
-								<p>Episodes Watched:</p>
-								<ul>
-								{_.map(watchedEpisodes, item =>
-									<li key={item._id}>{item.episode} -- {formatDate(item.date)}</li>
-								)}
-								</ul>
-							</div>
-						}
-					</div>
-				</div>
+				}
+				<AddButton onClick={this.toggleModal} />
 			</PageContainer>
 		);
 	}
@@ -72,18 +79,13 @@ class DetailPage extends Component {
 DetailPage.propTyoes = {
 	data: {
 		detailPage: PropTypes.shape({
-			poster: PropTypes.string,
-			title: PropTypes.string,
-			year: PropTypes.number,
-			genre: PropTypes.string,
-			rated: PropTypes.string,
-			released: PropTypes.string,
-			imdbRating: PropTypes.number,
-			imdbVotes: PropTypes.number,
-			runtime: PropTypes.number
+			title: PropTypes.string
 		}),
-		allData: PropTypes.array,
+		allData: PropTypes.arrayOf(PropTypes.shape({
+			title: PropTypes.string
+		})),
 		action: PropTypes.shape({
+			addTitle: PropTypes.func,
 			getAllData: PropTypes.func,
 			getDetailData: PropTypes.func
 		}),

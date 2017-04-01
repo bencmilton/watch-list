@@ -1400,5 +1400,50 @@ module.exports = [
 		"episode": "04",
 		"source": "FX",
 		"type": "TV"
+	},
+	{
+		"id": "Legion (S1 E08)",
+		"date": "2017-03-30T04:00:00.000Z",
+		"title": "Legion",
+		"season": "1",
+		"episode": "08",
+		"source": "FX",
+		"type": "TV"
+	},
+	{
+		"id": "Feud (S1 E1)",
+		"date": "2017-03-30T04:00:00.000Z",
+		"title": "Feud",
+		"season": "1",
+		"episode": "1",
+		"source": "FX",
+		"type": "TV"
+	},
+	{
+		"id": "Scandal (S6 E06)",
+		"date": "2017-03-31T04:00:00.000Z",
+		"title": "Scandal",
+		"season": "6",
+		"episode": "06",
+		"source": "ABC",
+		"type": "TV"
+	},
+	{
+		"id": "Live by Night",
+		"date": "2017-03-31T04:00:00.000Z",
+		"title": "Live by Night",
+		"season": "--",
+		"episode": "--",
+		"source": "BenPlex",
+		"type": "Movie"
+	},
+	{
+		"id": "Rogue One",
+		"date": "2017-03-31T04:00:00.000Z",
+		"title": "Rogue One",
+		"season": "--",
+		"episode": "--",
+		"source": "BenPlex",
+		"type": "Movie"
 	}
 ];

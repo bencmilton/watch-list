@@ -3,8 +3,6 @@ import React, { Component, PropTypes } from 'react';
 import { Column, SortDirection, Table } from 'react-virtualized';
 import 'react-virtualized/styles.css';
 
-import { formatDate } from '../../helpers';
-
 const COLUMN_WIDTH = 500;
 const COLUMN_NAMES = ['title', 'season', 'episode', 'runtime', 'source', 'type'];
 
@@ -59,7 +57,7 @@ export default class MainTable extends Component {
 					dataKey="date"
 					width={COLUMN_WIDTH}
 					cellRenderer={({ cellData, columnData, dataKey, rowData, rowIndex }) =>
-						formatDate(sortedList[rowIndex].date)
+						sortedList[rowIndex].date
 					}
 				/>
 				{_.map(COLUMN_NAMES, name =>
