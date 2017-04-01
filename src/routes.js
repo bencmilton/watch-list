@@ -5,12 +5,13 @@ import {
 	Switch
 } from 'react-router-dom';
 
-import MainList from './components/MainList';
 import AddTitleInput from './components/AddTitleInput';
-import MovieList from './components/MovieList';
-import TvList from './components/ShowList';
-import NotFound from './components/NotFound';
+import DetailPage from './components/DetailPage';
 import Header from './components/Header';
+import MainList from './components/MainList';
+import MovieList from './components/MovieList';
+import NotFound from './components/NotFound';
+import TvList from './components/ShowList';
 
 const Routes = props => (
 	<Router {...props}>
@@ -21,6 +22,7 @@ const Routes = props => (
 				<Route exact path="/add-title" component={AddTitleInput} />
 				<Route exact path="/movie-list" component={MovieList} />
 				<Route exact path="/tv-list" component={TvList} />
+				<Route exact path="/title/:id" component={DetailPage} />
 				<Route component={NotFound} />
 			</Switch>
 		</div>

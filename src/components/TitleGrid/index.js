@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+
 import './style.css';
 
 class TitleGrid extends Component {
@@ -8,9 +10,13 @@ class TitleGrid extends Component {
 		return (
 			<div className="title-grid--container">
 				{data.map(item =>
-					<div className="title-grid--item">
-						<img className="title-grid--poster" src={item.poster} />
-					</div>
+					<Link
+						key={item.imdbID}
+						to={"/title/" + item.imdbID}
+						className="title-grid--item"
+					>
+						<img alt={item.title} className="title-grid--poster" src={item.poster} />
+					</Link>
 				)}
 			</div>
 		);

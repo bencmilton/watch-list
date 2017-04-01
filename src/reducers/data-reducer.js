@@ -4,6 +4,7 @@ import * as types from '../actions/action-types';
 
 const defaultState = {
 	allData: [],
+	detailPage: {},
 	movies: [],
 	tvShows: []
 };
@@ -20,6 +21,12 @@ export default (state = defaultState, action) => {
 				allData: [ ...flatData ],
 				movies: [ ...flatData.filter(item => item.type === 'Movie') ],
 				tvShows: [ ...flatData.filter(item => item.type === 'TV') ],
+			};
+		case types.GET_DETAIL_DATA:
+			const detailPage = _.find(state.allData, { imdbID: action.imdbID });
+			return {
+				...state,
+				detailPage
 			};
 		default:
 			return state;
