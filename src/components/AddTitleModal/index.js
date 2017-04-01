@@ -22,6 +22,7 @@ class AddTitleModal extends Component {
 			episode: initialData ? initialData.episode + 1 : '--',
 			source: initialData ? initialData.source : 'Benplex',
 			type: initialData ? initialData.type : 'TV',
+			favorite: false
 		}
 	}
 
@@ -82,6 +83,7 @@ class AddTitleModal extends Component {
 		const {
 			date,
 			episode,
+			favorite,
 			season,
 			source,
 			title,
@@ -160,6 +162,13 @@ class AddTitleModal extends Component {
 							<input className="add-title--input" name="source" onChange={this.handleChange} value={source} />
 						</p>
 					}
+				</label>
+				<label>
+					<p>Favorite</p>
+					<select className="add-title--input" name="favorite" onChange={this.handleTypeChange} value={favorite}>
+						<option value={true}>True</option>
+						<option value={false}>False</option>
+					</select>
 				</label>
 				<p>
 					<button type="Submit">Submit</button>
