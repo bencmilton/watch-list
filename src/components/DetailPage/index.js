@@ -3,6 +3,7 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
+import { formatDate } from '../../helpers';
 import * as dataActions from '../../actions/data-actions';
 import './style.css';
 
@@ -25,13 +26,15 @@ class DetailPage extends Component {
 	}
 
 	render() {
-		const { detailPage } = this.props.data;
+		const { allData, detailPage } = this.props.data;
 		console.log('DetailPage, detailPage --> ', detailPage)
 		if (!detailPage) {
 			return (
 				<p>Loading...</p>
 			)
 		}
+
+		const watchedEpisodes = _.filter(allData, { title: detailPage.title });
 
 		return (
 			<div className="body-container">
@@ -40,16 +43,26 @@ class DetailPage extends Component {
 						<div className="detail-page--container">
 							<img
 								src={detailPage.poster}
-								className="detail-page--image"
+								className="detail-page--poster"
 								alt={detailPage.title}
 							/>
 							<div className="detail-page--info">
-								<p>{detailPage.title} ({detailPage.year})</p>
+								<h1>{detailPage.title} {detailPage.year && `(${detailPage.year})`}</h1>
 								<p>Genre: {detailPage.genre}</p>
 								<p>Rated: {detailPage.rated}</p>
 								<p>Release Date: {detailPage.released}</p>
 								<p>IMDb Rating: {detailPage.imdbRating} ({detailPage.imdbVotes} votes)</p>
 								<p>Runtime: {detailPage.runtime} minutes</p>
+								{detailPage.type === 'TV' &&
+									<div>
+										<p>Episodes Watched:</p>
+										<ul>
+										{_.map(watchedEpisodes, item =>
+											<li key={item._id}>{item.episode} -- {formatDate(item.date)}</li>
+										)}
+										</ul>
+									</div>
+								}
 							</div>
 						</div>
 					</div>
