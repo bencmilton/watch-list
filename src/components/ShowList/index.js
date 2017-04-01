@@ -50,9 +50,11 @@ class ShowList extends Component {
 		}
 
 		const uniqueShows = _.uniqBy(data.tvShows, 'title');
-		const tabbedContent = currentTab === 'grid'
-			? <TitleGrid data={uniqueShows} />
-			: <TitleTable data={uniqueShows} />;
+		const tabMap = {
+			grid: <TitleGrid data={uniqueShows} />,
+			list: <TitleTable data={uniqueShows} />,
+			favorites: <TitleGrid data={_.filter(uniqueShows, 'favorite')} />
+		};
 		const initialData = {
 			type: 'TV',
 			source: 'HBOGO'
@@ -62,7 +64,7 @@ class ShowList extends Component {
 			<PageContainer>
 				<StatTable showStats={global.showStats} data={data.tvShows} />
 				<TableCardTabs setCurrentTab={this.setCurrentTab} currentTab={currentTab} />
-				{!modalOpen && tabbedContent}
+				{!modalOpen && tabMap[currentTab]}
 				{modalOpen &&
 					<AddTitleModal addTitle={this.addTitle} currentTitle={initialData} />
 				}

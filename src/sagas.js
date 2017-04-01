@@ -8,6 +8,44 @@ import { formatRes } from './helpers';
 
 const db = new PouchDB('http://localhost:5984/WatchList');
 
+function* updateContentAsFavorite(action) {
+	try {
+		const doc = yield db.get(action.id);
+		doc.favorite = true;
+
+		db.put(doc);
+
+		yield put({
+			type: actions.ADD_AS_FAVORITE_SUCCEEDED,
+			data: doc
+		});
+	} catch (err) {
+		yield put({
+			type: actions.ADD_AS_FAVORITE_FAILED,
+			message: err.message
+		});
+	}
+}
+
+function* unFavoriteContent(action) {
+	try {
+		const doc = yield db.get(action.id);
+		doc.favorite = false;
+
+		db.put(doc);
+
+		yield put({
+			type: actions.REMOVE_AS_FAVORITE_SUCCEEDED,
+			data: doc
+		});
+	} catch (err) {
+		yield put({
+			type: actions.REMOVE_AS_FAVORITE_FAILED,
+			message: err.message
+		});
+	}
+}
+
 function* addTitleToDb(action) {
 	const entry = action.data;
 	const contentType = entry.type === 'TV' ? 'series' : 'movie';
@@ -58,9 +96,19 @@ function* getAllTitles() {
 	yield takeEvery(actions.GET_ALL_DATA, fetchAllData);
 }
 
+function* addAsFavorite() {
+	yield takeEvery(actions.ADD_AS_FAVORITE, updateContentAsFavorite);
+}
+
+function* removeAsFavorite() {
+	yield takeEvery(actions.REMOVE_AS_FAVORITE, unFavoriteContent);
+}
+
 export default function* root() {
 	yield [
 		fork(addTitle),
+		fork(addAsFavorite),
+		fork(removeAsFavorite),
 		fork(getAllTitles)
 	]
 }

@@ -242,7 +242,8 @@ module.exports = [
 		"season": "1",
 		"episode": "01",
 		"source": "HBOGO",
-		"type": "TV"
+		"type": "TV",
+		"favorite": true
 	},
 	{
 		"id": "Band of Brothers (S1 E03)",
@@ -261,7 +262,8 @@ module.exports = [
 		"season": "1",
 		"episode": "11",
 		"source": "NBC",
-		"type": "TV"
+		"type": "TV",
+		"favorite": true
 	},
 	{
 		"id": "Band of Brothers (S1 E04)",
@@ -318,7 +320,8 @@ module.exports = [
 		"season": "1",
 		"episode": "10",
 		"source": "NBC",
-		"type": "TV"
+		"type": "TV",
+		"favorite": true
 	},
 	{
 		"id": "The Good Place (S1 E12)",
@@ -327,7 +330,8 @@ module.exports = [
 		"season": "1",
 		"episode": "12",
 		"source": "NBC",
-		"type": "TV"
+		"type": "TV",
+		"favorite": true
 	},
 	{
 		"id": "Don't Think Twice",
@@ -345,7 +349,8 @@ module.exports = [
 		"season": "--",
 		"episode": "--",
 		"source": "BenPlex",
-		"type": "Movie"
+		"type": "Movie",
+		"favorite": true
 	},
 	{
 		"id": "La La Land ",
@@ -363,7 +368,8 @@ module.exports = [
 		"season": "--",
 		"episode": "--",
 		"source": "BenPlex",
-		"type": "Movie"
+		"type": "Movie",
+		"favorite": true
 	},
 	{
 		"id": "The Young Pope (S1 E02)",
@@ -372,7 +378,8 @@ module.exports = [
 		"season": "1",
 		"episode": "02",
 		"source": "HBOGO",
-		"type": "TV"
+		"type": "TV",
+		"favorite": true
 	},
 	{
 		"id": "Homeland (S6 E02)",
@@ -390,7 +397,8 @@ module.exports = [
 		"season": "--",
 		"episode": "--",
 		"source": "BenPlex",
-		"type": "Movie"
+		"type": "Movie",
+		"favorite": true
 	},
 	{
 		"id": "The Young Pope (S1 E03)",
@@ -399,7 +407,8 @@ module.exports = [
 		"season": "1",
 		"episode": "03",
 		"source": "HBOGO",
-		"type": "TV"
+		"type": "TV",
+		"favorite": true
 	},
 	{
 		"id": "The Young Pope (S1 E04)",
@@ -408,7 +417,8 @@ module.exports = [
 		"season": "1",
 		"episode": "04",
 		"source": "HBOGO",
-		"type": "TV"
+		"type": "TV",
+		"favorite": true
 	},
 	{
 		"id": "Indiana Jones and the Last Crusade",
@@ -435,7 +445,8 @@ module.exports = [
 		"season": "1",
 		"episode": "05",
 		"source": "HBOGO",
-		"type": "TV"
+		"type": "TV",
+		"favorite": true
 	},
 	{
 		"id": "Homeland (S6 E03)",
@@ -507,7 +518,8 @@ module.exports = [
 		"season": "1",
 		"episode": "07",
 		"source": "HBOGO",
-		"type": "TV"
+		"type": "TV",
+		"favorite": true
 	},
 	{
 		"id": "The Young Pope (S1 E08)",
@@ -516,7 +528,8 @@ module.exports = [
 		"season": "1",
 		"episode": "08",
 		"source": "HBOGO",
-		"type": "TV"
+		"type": "TV",
+		"favorite": true
 	},
 	{
 		"id": "The Crown (S1 E05)",
@@ -579,7 +592,8 @@ module.exports = [
 		"season": "1",
 		"episode": "09",
 		"source": "HBOGO",
-		"type": "TV"
+		"type": "TV",
+		"favorite": true
 	},
 	{
 		"id": "The Young Pope (S1 E10)",
@@ -588,7 +602,8 @@ module.exports = [
 		"season": "1",
 		"episode": "10",
 		"source": "HBOGO",
-		"type": "TV"
+		"type": "TV",
+		"favorite": true
 	},
 	{
 		"id": "Girls (S6 E01)",
@@ -597,7 +612,8 @@ module.exports = [
 		"season": "6",
 		"episode": "01",
 		"source": "HBOGO",
-		"type": "TV"
+		"type": "TV",
+		"favorite": true
 	},
 	{
 		"id": "Legion (S1 E01)",
@@ -606,7 +622,8 @@ module.exports = [
 		"season": "1",
 		"episode": "01",
 		"source": "FX",
-		"type": "TV"
+		"type": "TV",
+		"favorite": true
 	},
 	{
 		"id": "The Crown (S1 E10)",
@@ -633,7 +650,8 @@ module.exports = [
 		"season": "1",
 		"episode": "02",
 		"source": "FX",
-		"type": "TV"
+		"type": "TV",
+		"favorite": true
 	},
 	{
 		"id": "Last Week Tonight with John Oliver (S4 E01)",
@@ -787,7 +805,8 @@ module.exports = [
 		"season": "6",
 		"episode": "02",
 		"source": "HBOGO",
-		"type": "TV"
+		"type": "TV",
+		"favorite": true
 	},
 	{
 		"id": "Homeland (S6 E05)",
@@ -841,7 +860,8 @@ module.exports = [
 		"season": "1",
 		"episode": "03",
 		"source": "FX",
-		"type": "TV"
+		"type": "TV",
+		"favorite": true
 	},
 	{
 		"id": "Deadwood (S1 E11)",
@@ -913,7 +933,8 @@ module.exports = [
 		"season": "6",
 		"episode": "03",
 		"source": "HBOGO",
-		"type": "TV"
+		"type": "TV",
+		"favorite": true
 	},
 	{
 		"id": "Deadwood (S2 E03)",
@@ -986,7 +1007,8 @@ module.exports = [
 		"season": "1",
 		"episode": "04",
 		"source": "FX",
-		"type": "TV"
+		"type": "TV",
+		"favorite": true
 	},
 	{
 		"id": "Homeland (S6 E06)",
@@ -1043,7 +1065,8 @@ module.exports = [
 		"season": "6",
 		"episode": "04",
 		"source": "HBOGO",
-		"type": "TV"
+		"type": "TV",
+		"favorite": true
 	},
 	{
 		"id": "Crashing (S1 E03)",
@@ -1107,7 +1130,8 @@ module.exports = [
 		"season": "6",
 		"episode": "05",
 		"source": "HBOGO",
-		"type": "TV"
+		"type": "TV",
+		"favorite": true
 	},
 	{
 		"id": "This Is Us (S2 E17)",
@@ -1125,7 +1149,8 @@ module.exports = [
 		"season": "5",
 		"episode": "01",
 		"source": "FX",
-		"type": "TV"
+		"type": "TV",
+		"favorite": true
 	},
 	{
 		"id": "Legion (S1 E05)",
@@ -1134,7 +1159,8 @@ module.exports = [
 		"season": "1",
 		"episode": "05",
 		"source": "FX",
-		"type": "TV"
+		"type": "TV",
+		"favorite": true
 	},
 	{
 		"id": "The Americans (S5 E02)",
@@ -1143,7 +1169,8 @@ module.exports = [
 		"season": "5",
 		"episode": "02",
 		"source": "FX",
-		"type": "TV"
+		"type": "TV",
+		"favorite": true
 	},
 	{
 		"id": "This Is Us (S2 E18)",
@@ -1179,7 +1206,8 @@ module.exports = [
 		"season": "1",
 		"episode": "06",
 		"source": "FX",
-		"type": "TV"
+		"type": "TV",
+		"favorite": true
 	},
 	{
 		"id": "Crashing (S1 E04)",
@@ -1261,7 +1289,8 @@ module.exports = [
 		"season": "6",
 		"episode": "06",
 		"source": "HBOGO",
-		"type": "TV"
+		"type": "TV",
+		"favorite": true
 	},
 	{
 		"id": "Homeland (S6 E09)",
@@ -1288,7 +1317,8 @@ module.exports = [
 		"season": "5",
 		"episode": "03",
 		"source": "FX",
-		"type": "TV"
+		"type": "TV",
+		"favorite": true
 	},
 	{
 		"id": "Legion (S1 E07)",
@@ -1297,7 +1327,8 @@ module.exports = [
 		"season": "1",
 		"episode": "07",
 		"source": "FX",
-		"type": "TV"
+		"type": "TV",
+		"favorite": true
 	},
 	{
 		"id": "Planet Earth (S2 E04)",
@@ -1354,7 +1385,8 @@ module.exports = [
 		"season": "6",
 		"episode": "07",
 		"source": "HBOGO",
-		"type": "TV"
+		"type": "TV",
+		"favorite": true
 	},
 	{
 		"id": "Crashing (S1 E06)",
@@ -1399,7 +1431,8 @@ module.exports = [
 		"season": "5",
 		"episode": "04",
 		"source": "FX",
-		"type": "TV"
+		"type": "TV",
+		"favorite": true
 	},
 	{
 		"id": "Legion (S1 E08)",
@@ -1408,7 +1441,8 @@ module.exports = [
 		"season": "1",
 		"episode": "08",
 		"source": "FX",
-		"type": "TV"
+		"type": "TV",
+		"favorite": true
 	},
 	{
 		"id": "Feud (S1 E1)",

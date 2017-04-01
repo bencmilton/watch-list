@@ -1,5 +1,6 @@
 var _ = require('lodash');
 var PouchDB = require('pouchdb');
+var Promise = require('bluebird');
 var rp = require('request-promise');
 
 var data = require('./data');
@@ -7,7 +8,7 @@ var { formatDate, formatRes } = require('./src/helpers');
 
 var db = new PouchDB('http://localhost:5984/WatchList');
 
-_.forEach(data, entry => {
+Promise.map(data, entry => {
 	const document = {
 		_id: entry.id,
 		date: formatDate(entry.date),
@@ -15,7 +16,8 @@ _.forEach(data, entry => {
 		season: entry.season === '--' ? entry.season : _.toNumber(entry.season),
 		episode: entry.episode === '--' ? entry.episode : _.toNumber(entry.episode),
 		source: entry.source,
-		type: entry.type
+		type: entry.type,
+		favorite: entry.favorite || false
 	};
 
 	const contentType = entry.type === 'TV' ? 'series' : 'movie';
@@ -32,4 +34,4 @@ _.forEach(data, entry => {
 			.then(response => console.log('response --> ', response))
 			.catch(err => console.log(err));
 	});
-});
+}, { concurrency: 50 });

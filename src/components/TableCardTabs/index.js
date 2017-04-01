@@ -15,6 +15,11 @@ export default function TableCardTabs({ currentTab, setCurrentTab }) {
 			})}>
 				List
 			</span>
+			<span onClick={setCurrentTab.bind(null, 'favorites')} className={classNames('table-card--tab', {
+				'table-card--current-tab': currentTab === 'favorites'
+			})}>
+				Favorites
+			</span>
 		</div>
 	);
 }

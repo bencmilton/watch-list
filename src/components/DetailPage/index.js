@@ -19,6 +19,15 @@ class DetailPage extends Component {
 		}
 	}
 
+	addAsFavorite = id => {
+		console.log('addAsFavorite, id -> ', id)
+		this.props.actions.addAsFavorite(id);
+	}
+
+	removeAsFavorite = id => {
+		this.props.actions.removeAsFavorite(id);
+	}
+
 	addEpisode = data => {
 		this.props.actions.addTitle(data);
 		this.setState({
@@ -61,7 +70,12 @@ class DetailPage extends Component {
 		return (
 			<PageContainer>
 				{!this.state.modalOpen &&
-					<TitleDetails title={detailPage} watchedEpisodes={watchedEpisodes} />
+					<TitleDetails
+						addAsFavorite={this.addAsFavorite}
+						removeAsFavorite={this.removeAsFavorite}
+						title={detailPage}
+						watchedEpisodes={watchedEpisodes}
+					/>
 				}
 				{this.state.modalOpen &&
 					<AddTitleModal
@@ -85,9 +99,11 @@ DetailPage.propTyoes = {
 			title: PropTypes.string
 		})),
 		action: PropTypes.shape({
+			addAsFavorite: PropTypes.func,
 			addTitle: PropTypes.func,
 			getAllData: PropTypes.func,
-			getDetailData: PropTypes.func
+			getDetailData: PropTypes.func,
+			removeAsFavorite: PropTypes.func
 		}),
 		match: PropTypes.shape({
 			params: PropTypes.shape({

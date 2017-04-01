@@ -172,7 +172,10 @@ class AddTitleModal extends Component {
 AddTitleModal.propTypes = {
 	addTitle: PropTypes.func,
 	currentTitle: PropTypes.shape({
-		episode: PropTypes.number,
+		episode: PropTypes.oneOfType([
+			React.PropTypes.string,
+			React.PropTypes.number
+		]),
 		season: PropTypes.number,
 		source: PropTypes.string,
 		title: PropTypes.string,
@@ -184,7 +187,10 @@ AddTitleModal.propTypes = {
 		tvShows: PropTypes.arrayOf(PropTypes.object)
 	}),
 	lastEpisodeWatched: PropTypes.shape({
-		episode: PropTypes.number,
+		episode: PropTypes.oneOfType([
+			React.PropTypes.string,
+			React.PropTypes.number
+		]),
 		season: PropTypes.number,
 		source: PropTypes.string,
 		title: PropTypes.string,

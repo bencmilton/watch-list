@@ -19,3 +19,17 @@ export const addTitle = data => {
 		data
 	};
 };
+
+export const addAsFavorite = id => {
+	return {
+		type: types.ADD_AS_FAVORITE,
+		id
+	};
+};
+
+export const removeAsFavorite = id => {
+	return {
+		type: types.REMOVE_AS_FAVORITE,
+		id
+	};
+};

@@ -16,6 +16,7 @@ class TitleGrid extends Component {
 						className="title-grid--item"
 					>
 						<img alt={item.title} className="title-grid--poster" src={item.poster} />
+						{item.favorite && <div className="title-grid--favorite">⭐</div>}
 					</Link>
 				)}
 			</div>

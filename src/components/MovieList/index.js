@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -47,9 +48,11 @@ class MovieList extends Component {
 			);
 		}
 
-		const tabbedContent = currentTab === 'grid'
-			? <TitleGrid data={data.movies} />
-			: <TitleTable data={data.movies} />;
+		const tabMap = {
+			grid: <TitleGrid data={data.movies} />,
+			list: <TitleTable data={data.movies} />,
+			favorites: <TitleGrid data={_.filter(data.movies, 'favorite')} />
+		};
 
 		const initialData = {
 			type: 'Movie',
@@ -60,7 +63,7 @@ class MovieList extends Component {
 			<PageContainer>
 				<StatTable showStats={global.showStats} data={data.movies} />
 				<TableCardTabs setCurrentTab={this.setCurrentTab} currentTab={currentTab} />
-				{!modalOpen && tabbedContent}
+				{!modalOpen && tabMap[currentTab]}
 				{modalOpen &&
 					<AddTitleModal addTitle={this.addTitle} currentTitle={initialData} />
 				}

@@ -12,7 +12,7 @@
     position: fixed;
     z-index: 2;
     top: 0;
-    left: 120px;
+    left: -600px;
     transition: all 1s ease-in-out;
     margin-top: 40px;
 }
@@ -20,6 +20,7 @@
 .stat-table--container__open {
     opacity: 1;
     top: 70px;
+    left: 120px;
     padding: 40px;
 }
 

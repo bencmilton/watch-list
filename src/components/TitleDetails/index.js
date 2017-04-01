@@ -3,7 +3,7 @@ import React, { PropTypes } from 'react';
 
 import './style.css';
 
-function TitleDetails({ title, watchedEpisodes }) {
+function TitleDetails({ addAsFavorite, removeAsFavorite, title, watchedEpisodes }) {
 	return (
 		<div className="detail-page--container">
 			<img
@@ -12,7 +12,15 @@ function TitleDetails({ title, watchedEpisodes }) {
 				alt={title.title}
 			/>
 			<div className="detail-page--info">
-				<h1>{title.title} {title.year && `(${title.year})`}</h1>
+				<h1>
+					{title.title} {title.year && `(${title.year})`} {title.favorite && ' ⭐'}
+				</h1>
+				{!title.favorite &&
+					<p onClick={addAsFavorite.bind(null, title._id)}>Add as favorite?</p>
+				}
+				{title.favorite &&
+					<p onClick={removeAsFavorite.bind(null, title._id)}>Un-favorite?</p>
+				}
 				<p>Actors: {title.actors}</p>
 				<p>Plot: {title.plot}</p>
 				<p>Awards: {title.awards}</p>
@@ -38,8 +46,10 @@ function TitleDetails({ title, watchedEpisodes }) {
 
 TitleDetails.propTypes ={
 	title: PropTypes.shape({
+		_id: PropTypes.string,
 		actors: PropTypes.string,
 		awards: PropTypes.string,
+		favorite: PropTypes.bool,
 		plot: PropTypes.string,
 		poster: PropTypes.string,
 		title: PropTypes.string,
@@ -53,7 +63,10 @@ TitleDetails.propTypes ={
 	}),
 	watchedEpisodes: PropTypes.arrayOf(PropTypes.shape({
 		_id: PropTypes.string,
-		episode: PropTypes.number,
+		episode: PropTypes.oneOfType([
+			React.PropTypes.string,
+			React.PropTypes.number
+		]),
 		date: PropTypes.string,
 	}))
 };
