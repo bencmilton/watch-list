@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 
+import PageContainer from '../PageContainer';
 import MainTable from '../MainTable';
 import './style.css';
 
@@ -8,13 +9,9 @@ class MainList extends Component {
 
   render() {
     return (
-			<div className="body-container">
-				<div className="table-container">
-					<div className="table-card">
-						<MainTable data={this.props.data.allData} />
-					</div>
-				</div>
-			</div>
+			<PageContainer>
+				<MainTable data={this.props.data.allData} />
+			</PageContainer>
     );
   }
 }

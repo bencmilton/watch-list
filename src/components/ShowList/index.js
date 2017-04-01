@@ -2,6 +2,7 @@ import _ from 'lodash';
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 
+import PageContainer from '../PageContainer';
 import TableCardTabs from '../TableCardTabs';
 import TitleGrid from '../TitleGrid';
 import TitleTable from '../TitleTable';
@@ -33,18 +34,14 @@ class ShowList extends Component {
 		const uniqueShows = _.uniqBy(data.tvShows, 'title');
 
 		return (
-			<div className="body-container">
-				<div className="table-container">
-					<StatTable showStats={global.showStats} data={data.tvShows} />
-					<div className="table-card">
-						<TableCardTabs setCurrentTab={this.setCurrentTab} currentTab={currentTab} />
-						{currentTab === 'grid'
-							? <TitleGrid data={uniqueShows} />
-							: <TitleTable data={uniqueShows} />
-						}
-					</div>
-				</div>
-			</div>
+			<PageContainer>
+				<StatTable showStats={global.showStats} data={data.tvShows} />
+				<TableCardTabs setCurrentTab={this.setCurrentTab} currentTab={currentTab} />
+				{currentTab === 'grid'
+					? <TitleGrid data={uniqueShows} />
+					: <TitleTable data={uniqueShows} />
+				}
+			</PageContainer>
 		);
 	}
 }

@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 
+import PageContainer from '../PageContainer';
 import TableCardTabs from '../TableCardTabs';
 import TitleGrid from '../TitleGrid';
 import TitleTable from '../TitleTable';
@@ -29,18 +30,14 @@ class MovieList extends Component {
 		}
 
 		return (
-			<div className="body-container">
-				<div className="table-container">
-					<StatTable showStats={global.showStats} data={data.movies} />
-					<div className="table-card">
-						<TableCardTabs setCurrentTab={this.setCurrentTab} currentTab={currentTab} />
-						{currentTab === 'grid'
-							? <TitleGrid data={data.movies} />
-							: <TitleTable data={data.movies} />
-						}
-					</div>
-				</div>
-			</div>
+			<PageContainer>
+				<StatTable showStats={global.showStats} data={data.movies} />
+				<TableCardTabs setCurrentTab={this.setCurrentTab} currentTab={currentTab} />
+				{currentTab === 'grid'
+					? <TitleGrid data={data.movies} />
+					: <TitleTable data={data.movies} />
+				}
+			</PageContainer>
 		);
 	}
 }
