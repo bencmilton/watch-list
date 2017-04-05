@@ -18,7 +18,12 @@ module.exports.formatDate = function formatDate(datetime) {
 	const [ year, month, day ] = date.split('-');
 	const formattedMonth = month[0] === '0' ? month[1] : month;
 	const formattedDay = day[0] === '0' ? day[1] : day;
-	return `${formattedMonth}/${formattedDay}/${year}`;
+	return {
+		formattedDate: `${formattedMonth}/${formattedDay}/${year}`,
+		year: _.toNumber(year),
+		day: _.toNumber(formattedDay),
+		month: _.toNumber(formattedMonth)
+	};
 }
 
 module.exports.formatJsDate = function formatJsDate(date) {

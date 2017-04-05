@@ -1395,7 +1395,8 @@ module.exports = [
 		"season": "1",
 		"episode": "06",
 		"source": "HBOGO",
-		"type": "TV"
+		"type": "TV",
+		"imdbid": "tt5037914"
 	},
 	{
 		"id": "Homeland (S6 E10)",
@@ -1479,5 +1480,33 @@ module.exports = [
 		"episode": "--",
 		"source": "BenPlex",
 		"type": "Movie"
+	},
+	{
+		"id": "Big Little Lies (S1 E07)",
+		"date": "2017-04-02T04:00:00.000Z",
+		"title": "Big Little Lies",
+		"season": "1",
+		"episode": "07",
+		"source": "HBOGO",
+		"type": "TV"
+	},
+	{
+		"id": "Girls (S6 E08)",
+		"date": "2017-04-03T04:00:00.000Z",
+		"title": "Girls",
+		"season": "6",
+		"episode": "08",
+		"source": "HBOGO",
+		"type": "TV"
+	},
+	{
+		"id": "Crashing (S1 E07)",
+		"date": "2017-04-03T04:00:00.000Z",
+		"title": "Crashing",
+		"season": "1",
+		"episode": "07",
+		"source": "HBOGO",
+		"type": "TV",
+		"imdbid": "tt5037914"
 	}
 ];

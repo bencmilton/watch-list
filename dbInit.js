@@ -9,9 +9,14 @@ var { formatDate, formatRes } = require('./src/helpers');
 var db = new PouchDB('http://localhost:5984/WatchList');
 
 Promise.map(data, entry => {
+	const dateObj = formatDate(entry.date);
 	const document = {
 		_id: entry.id,
-		date: formatDate(entry.date),
+		date: dateObj.formattedDate,
+		watchDay: dateObj.day,
+		watchMonth: dateObj.month,
+		watchYear: dateObj.year,
+		rawDate: entry.date,
 		title: entry.title,
 		season: entry.season === '--' ? entry.season : _.toNumber(entry.season),
 		episode: entry.episode === '--' ? entry.episode : _.toNumber(entry.episode),

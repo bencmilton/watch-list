@@ -166,8 +166,8 @@ class AddTitleModal extends Component {
 				<label>
 					<p>Favorite</p>
 					<select className="add-title--input" name="favorite" onChange={this.handleTypeChange} value={favorite}>
-						<option value={true}>True</option>
-						<option value={false}>False</option>
+						<option value={true}>Yes</option>
+						<option value={false}>No</option>
 					</select>
 				</label>
 				<p>

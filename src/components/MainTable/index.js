@@ -5,7 +5,7 @@ import 'react-virtualized/styles.css';
 
 const COLUMN_WIDTH = 500;
 const TITLE_COLUMN_WIDTH = 1000;
-const COLUMN_NAMES = ['title', 'season', 'episode', 'runtime', 'source', 'type', 'favorite'];
+const COLUMN_NAMES = ['title', 'season', 'episode', 'runtime', 'source', 'type'];
 
 export default class MainTable extends Component {
 
@@ -55,7 +55,7 @@ export default class MainTable extends Component {
 			>
 				<Column
 					label="date"
-					dataKey="date"
+					dataKey="rawDate"
 					width={COLUMN_WIDTH}
 					cellRenderer={({ cellData, columnData, dataKey, rowData, rowIndex }) =>
 						sortedList[rowIndex].date
@@ -69,6 +69,14 @@ export default class MainTable extends Component {
 						width={name === 'title' ? TITLE_COLUMN_WIDTH : COLUMN_WIDTH}
 					/>
 				)}
+				<Column
+					label="favorite"
+					dataKey="favorite"
+					width={COLUMN_WIDTH}
+					cellRenderer={({ cellData, columnData, dataKey, rowData, rowIndex }) =>
+						sortedList[rowIndex].favorite && '✅'
+					}
+				/>
 			</Table>
 		);
 	}
