@@ -22,7 +22,7 @@ class AddTitleModal extends Component {
 			episode: initialData ? initialData.episode + 1 : '--',
 			source: initialData ? initialData.source : 'Benplex',
 			type: initialData ? initialData.type : 'TV',
-			favorite: false
+			favorite: initialData ? initialData.favorite : false
 		}
 	}
 
