@@ -21,14 +21,14 @@
     "styled-components": "^1.4.4"
   },
   "devDependencies": {
-    "react-scripts": "0.9.5",
     "redux-devtools": "^3.3.2"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start": "node build",
+    "dev-start": "react-scripts start",
+    "build": "react-scripts build && npm run copy-server",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "heroku-postbuild": "node server"
+    "copy-server": "cp -R src/server/ build/"
   }
 }
